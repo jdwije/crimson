@@ -4,4 +4,4 @@ require "bundler/setup"
 require "risp"
 
 
-Risp::repl
+Risp::Console.start(ARGV)
