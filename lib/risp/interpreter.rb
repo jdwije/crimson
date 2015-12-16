@@ -14,7 +14,7 @@ module Risp
       when :define then env[x[1]] = eval(x[2], env)
       when :lambda
         _, vars, exp = x
-        Proc.new{|*args| eval(exp, Env.new(vars, args, env))}
+        Proc.new{|*args| eval(exp, Risp::StdEnv.new(vars, args, env))}
       when :begin
         x[1..-1].inject([nil, env]) { |val_env, exp|
           [eval(exp, val_env[1]), val_env[1]]

@@ -32,13 +32,20 @@ module Risp
       end
 
       loop do
-        repl[">> "]
+        repl[">>"]
       end
     end
 
-    desc "execute FILE", "execute FILE as risp source code"
-    def execute(file)
-      puts "#{file}"
+    desc "execute PROGRAM", "execute PROGRAM string as risp code"
+    option :file, :type => :boolean, :desc => "read and execute from file"
+    def execute(program)
+      if options.key? 'file'
+        file = File.open(program, "rb")
+        contents = file.read
+      else
+        contents = program
+      end
+      puts @interpreter.eval(@parser.parse(contents), @env)
     end
   end
 
