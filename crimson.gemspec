@@ -1,11 +1,11 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'risp/version'
+require 'crimson/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "risp"
-  spec.version       = Risp::VERSION
+  spec.name          = "crimson"
+  spec.version       = Crimson::VERSION
   spec.authors       = ["jdw"]
   spec.email         = ["admin@jwije.com"]
 

@@ -1,9 +1,9 @@
 require 'spec_helper'
 
-describe Risp::StdEnv do
+describe Crimson::StdEnv do
 
   before :each do
-    @std_env = Risp::StdEnv.new
+    @std_env = Crimson::StdEnv.new
   end
 
   it 'can handle operation correctly' do

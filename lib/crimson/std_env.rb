@@ -1,4 +1,4 @@
-module Risp
+module Crimson
   class StdEnv < Hash
 
     def initialize(keys=[], vals=[], outer=nil)

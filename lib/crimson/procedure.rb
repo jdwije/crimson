@@ -1,4 +1,4 @@
-module Risp
+module Crimson
   class Procedure
 
     def initialize(this, parms, body, env)

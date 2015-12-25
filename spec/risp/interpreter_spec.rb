@@ -1,12 +1,12 @@
 require 'spec_helper'
 
-describe Risp::Parser do
+describe Crimson::Parser do
 
   before :each do
     @program = '(begin (define r 10) (define pi 3.147) (* pi (* r r)))'
-    @interpreter = Risp::Interpreter.new
-    @parser = Risp::Parser.new
-    @env = Risp::StdEnv.new
+    @interpreter = Crimson::Interpreter.new
+    @parser = Crimson::Parser.new
+    @env = Crimson::StdEnv.new
   end
 
   it 'can evaluate a basic program correctly' do

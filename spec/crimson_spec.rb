@@ -1,9 +1,9 @@
 require 'spec_helper'
 
-describe Risp do
+describe Crimson do
 
   it 'has a version number' do
-    expect(Risp::VERSION).not_to be nil
+    expect(Crimson::VERSION).not_to be nil
   end
 
 end

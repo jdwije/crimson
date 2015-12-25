@@ -1,9 +1,9 @@
 require 'spec_helper'
 
-describe Risp::Parser do
+describe Crimson::Parser do
 
   before :each do
-    @parser = Risp::Parser.new
+    @parser = Crimson::Parser.new
     @program = '(begin (define r 10) (* pi (* r r)))'
   end
 

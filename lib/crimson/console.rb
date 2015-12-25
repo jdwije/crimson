@@ -1,6 +1,6 @@
 require "thor"
 
-module Risp
+module Crimson
 
   # Console
   # -------
@@ -16,9 +16,9 @@ module Risp
     def initialize(*args)
       super(*args)
 
-      @interpreter = Risp::Interpreter.new
-      @parser = Risp::Parser.new
-      @env = Risp::StdEnv.new
+      @interpreter = Crimson::Interpreter.new
+      @parser = Crimson::Parser.new
+      @env = Crimson::StdEnv.new
     end
 
     desc "repl", "start an interactive risp REPL"
