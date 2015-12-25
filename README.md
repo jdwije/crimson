@@ -1,18 +1,13 @@
-# Ruby-Scheme
+# Crimson
 
-*An embeddable scheme implementation for ruby.*
-
-Ruby-Scheme is a work-in-progress Scheme implementation that I am writing to teach myself about interpreters. This project has a number of goals in mind.
-
-- embeddable in ruby and able to leverage it.
-- standards compliant [R6].
+*An embeddable R6RS scheme implementation for ruby.*
 
 ## Installation
 
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'ruby-scheme'
+gem 'crimson'
 ```
 
 And then execute:
@@ -21,11 +16,21 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install risp
+    $ gem install crimson
 
 ## Usage
 
-TODO: Write usage instructions here
+Open a repl:
+
+```
+bin/crimson repl
+```
+
+Read and execute some code:
+
+```
+bin/crimson execute code.scm
+```
 
 ## Development
 
@@ -35,7 +40,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/risp.
+Bug reports and pull requests are welcome on GitHub at https://github.com/jdwije/crimson.
 
 
 ## License
