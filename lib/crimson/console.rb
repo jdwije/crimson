@@ -4,7 +4,7 @@ module Crimson
 
   # Console
   # -------
-  # A command line helper class for the RISP system.
+  # A command line helper class for the Crimson system.
   #
   # author:     jdw
   # date:       15 Dec 2015
