@@ -1,6 +1,6 @@
 # Crimson
 
-*An embeddable R6RS scheme implementation for ruby.*
+*An embeddable R6RS Scheme interpreter for Ruby*
 
 ## Installation
 
@@ -29,9 +29,20 @@ bin/crimson repl
 Read and execute some code:
 
 ```
-bin/crimson execute code.scm
+bin/crimson execute /path/to/code.scm
 ```
 
+You can of course also embed Crimson within your Ruby applications:
+
+```
+require 'crimson'
+
+interpreter = Crimson::Interpreter.new
+parser = Crimson::Parser.new
+env = Crimson::StdEnv.new
+
+puts interpreter.eval(parser.parse(input), env)
+```
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
@@ -47,3 +58,7 @@ Bug reports and pull requests are welcome on GitHub at https://github.com/jdwije
 
 The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
 
+## Inspiration
+
+- http://norvig.com/lispy.html
+- https://github.com/jcoglan/heist
