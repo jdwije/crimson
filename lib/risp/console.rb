@@ -45,7 +45,7 @@ module Risp
       else
         contents = program
       end
-      puts @interpreter.eval(@parser.parse(contents), @env)
+      @interpreter.eval(@parser.parse(contents), @env)
     end
   end
 

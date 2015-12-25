@@ -3,7 +3,7 @@ module Risp
   class Parser
 
     def tokenize program
-      return program.delete!('\n').gsub('(', ' ( ').gsub(')', ' ) ').split
+      return program.gsub('(', ' ( ').gsub(')', ' ) ').split
     end
 
     def parse program

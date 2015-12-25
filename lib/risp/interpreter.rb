@@ -1,6 +1,5 @@
 module Risp
   class Interpreter
-
     def eval(x, env)
       return env[x] if x.is_a? Symbol
       return x if !x.is_a? Array
