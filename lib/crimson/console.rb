@@ -18,7 +18,7 @@ module Crimson
 
       @interpreter = Crimson::Interpreter.new
       @parser = Crimson::Parser.new
-      @env = Crimson::StdEnv.new
+      @env = Crimson::Environment.new
     end
 
     desc "repl", "start an interactive risp REPL"

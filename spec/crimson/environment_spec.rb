@@ -1,9 +1,9 @@
 require 'spec_helper'
 
-describe Crimson::StdEnv do
+describe Crimson::Environment do
 
   before :each do
-    @std_env = Crimson::StdEnv.new
+    @std_env = Crimson::Environment.new
   end
 
   it 'can handle operation correctly' do

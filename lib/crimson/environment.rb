@@ -1,5 +1,5 @@
 module Crimson
-  class StdEnv < Hash
+  class Environment < Hash
 
     def initialize(keys=[], vals=[], outer=nil)
       @outer = outer

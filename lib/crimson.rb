@@ -1,6 +1,6 @@
 require "crimson/version"
 require "crimson/parser"
-require "crimson/std_env"
+require "crimson/environment"
 require "crimson/interpreter"
 require "crimson/console"
 

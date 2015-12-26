@@ -6,7 +6,7 @@ describe Crimson::Parser do
     @program = '(begin (define r 10) (define pi 3.147) (* pi (* r r)))'
     @interpreter = Crimson::Interpreter.new
     @parser = Crimson::Parser.new
-    @env = Crimson::StdEnv.new
+    @env = Crimson::Environment.new
   end
 
   it 'can evaluate a basic program correctly' do

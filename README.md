@@ -1,6 +1,6 @@
 # Crimson
 
-*An embeddable R6RS Scheme interpreter for Ruby*
+*An embeddable R6RS Scheme implementation for Ruby*
 
 ## Installation
 
@@ -39,9 +39,11 @@ require 'crimson'
 
 interpreter = Crimson::Interpreter.new
 parser = Crimson::Parser.new
-env = Crimson::StdEnv.new
+env = Crimson::Environment.new
+program = '(define square (x) (* x x))'
+           + '(display (square 3))'
 
-puts interpreter.eval(parser.parse(input), env)
+puts interpreter.eval(parser.parse(program), env)
 ```
 ## Development
 
