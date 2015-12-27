@@ -2,6 +2,10 @@
 
 *An embeddable R6RS Scheme implementation for Ruby*
 
+Crimson is a Ruby hosted R6 Scheme implimentation that takes advantage of the Ruby
+ecosystem with strong interop capabilities. Crimson can be used as a standalone
+Scheme interpreter, or as an embeddable meta-language for your projects.
+
 ## Installation
 
 Add this line to your application's Gemfile:

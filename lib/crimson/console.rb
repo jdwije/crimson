@@ -17,7 +17,7 @@ module Crimson
       super(*args)
 
       @interpreter = Crimson::Interpreter.new
-      @parser = Crimson::Parser.new
+      @parser = Crimson::Sexpistol.new
       @env = Crimson::Environment.new
     end
 
@@ -27,8 +27,11 @@ module Crimson
         print prompt
         #      input = gets.chop
         input = ask('')
-          exit if input == 'exit'
-        puts @interpreter.eval(@parser.parse(input), @env)
+        exit if input == 'exit'
+        tree = @parser.parse(input)
+        tree.each { |exp| 
+          puts @interpreter.eval(exp, @env)
+        }
       end
 
       loop do
@@ -45,7 +48,10 @@ module Crimson
       else
         contents = program
       end
-      @interpreter.eval(@parser.parse(contents), @env)
+      tree = @parser.parse(contents)
+      tree.each { |exp|
+        @interpreter.eval(exp, @env)
+      }
     end
   end
 

@@ -1,5 +1,6 @@
 require "crimson/version"
-require "crimson/parser"
+require "crimson/sexpistol"
+require "crimson/sexpistol-parser"
 require "crimson/environment"
 require "crimson/interpreter"
 require "crimson/console"

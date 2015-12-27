@@ -3,6 +3,7 @@ module Crimson
     def eval(x, env)
       return env[x] if x.is_a? Symbol
       return x if !x.is_a? Array
+
       # handle rest
       case x[0]
       when :quote then x[1..-1]
