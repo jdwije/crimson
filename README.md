@@ -68,3 +68,4 @@ The gem is available as open source under the terms of the [MIT License](http://
 
 - http://norvig.com/lispy.html
 - https://github.com/jcoglan/heist
+- https://github.com/aarongough/sexpistol
