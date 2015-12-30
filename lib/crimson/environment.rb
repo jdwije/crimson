@@ -3,10 +3,18 @@ module Crimson
 
     def initialize(keys=[], vals=[], outer=nil)
       @outer = outer
-      keys.zip(vals).each{|p| store(*p)}
+      if keys.is_a? Symbol
+        puts 'mmot'
+        [ keys ].zip(vals)
+        store(keys, vals)
+        # self.update({parms:list(args)})
+        # keys.zip(vals.list).each{|p| store(*p)}
+      else
+        throw Exception, "expected #{keys.to_s} given #{vals.to_s}" unless keys.size == vals.size
+        keys.zip(vals).each{|p| store(*p)}
+      end
       ops = [:+, :-, :*, :/, :>, :<, :>=, :<=, :==]
       ops.each{ |op| self[op] = lambda{|a, b| a.send(op, b)} }
-
       self[:length] = lambda{ |x| x.length }
       self[:cons] = lambda{ |x, y| [x] + y }
       self[:car] = lambda{|x| x[0]}

@@ -15,10 +15,8 @@ module Crimson
 
     def initialize(*args)
       super(*args)
-
-      @interpreter = Crimson::Interpreter.new
+      @interpreter = Crimson::Interpreter.new(Crimson::Environment.new)
       @parser = Crimson::Sexpistol.new
-      @env = Crimson::Environment.new
     end
 
     desc "repl", "start an interactive risp REPL"
@@ -28,10 +26,15 @@ module Crimson
         #      input = gets.chop
         input = ask('')
         exit if input == 'exit'
-        tree = @parser.parse(input)
-        tree.each { |exp| 
-          puts @interpreter.eval(exp, @env)
-        }
+        begin
+          tree = @parser.parse(input)
+          tree.each { |exp|
+            puts @interpreter.eval(@interpreter.expand(exp))
+          }
+        rescue Exception => e
+          puts "ERROR: #{e.message}"
+          puts e.backtrace
+        end
       end
 
       loop do
@@ -50,7 +53,7 @@ module Crimson
       end
       tree = @parser.parse(contents)
       tree.each { |exp|
-        @interpreter.eval(exp, @env)
+        @interpreter.eval(@interpreter.expand(exp))
       }
     end
   end

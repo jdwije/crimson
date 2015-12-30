@@ -61,6 +61,5 @@ module Crimson
           raise "Invalid character at position #{pos} near '#{near}'."
         end
     end
-
   end
 end

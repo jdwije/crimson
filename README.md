@@ -38,7 +38,7 @@ bin/crimson execute /path/to/code.scm
 
 You can of course also embed Crimson within your Ruby applications:
 
-```
+```ruby
 require 'crimson'
 
 interpreter = Crimson::Interpreter.new
