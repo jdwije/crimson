@@ -1,6 +1,8 @@
 # Crimson
 
-*An embeddable scheme implementation for Ruby*
+*An embeddable scheme implementation for ruby*
+
+[![Build Status](https://travis-ci.org/jdwije/crimson.svg)](https://travis-ci.org/jdwije/crimson)
 
 Crimson is a work-in-progress Scheme interpreter written in Ruby. It implements
 a subset of the R6RS specification and adds back some flavor by exploiting the
