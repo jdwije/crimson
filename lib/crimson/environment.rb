@@ -25,7 +25,7 @@ module Crimson
       self[:null?] = lambda{ |x| x == nil }
       self[:symbol?] = lambda{ |x| x.is_a? Symbol }
       self[:not] = lambda{ |x| !x }
-      self[:display] = lambda{ |x| p x }
+      self[:display] = lambda{ |x| puts x }
     end
 
     def [](name)  super(name) || @outer[name] end

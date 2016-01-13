@@ -5,13 +5,22 @@ module Crimson
       @global_env = environment
       @_append, @_cons, @_let = "append cons let".split.map { |s| s.to_sym }
       @macro_table = {:let => method(:let)} ## More macros can go here
-      # load_self_derived_runtime()
+      # load_built_in()
     end
 
-    # loads metacircular language definitions
-    def load_self_derived_runtime
+    # loads built-in language definitions.
+    def load_build_in
       parser = Crimson::Sexpistol.new
-      Dir.glob(File.dirname(__FILE__) + '/self_derived/*.scm') do |file|
+      Dir.glob(File.dirname(__FILE__) + '/../built-in/*.scm') do |file|
+        next if file == '.' or file == '..'
+        self.eval(expand(parser.parse(File.read(file))))
+      end
+    end
+
+    # loads a standard library package.
+    def load_standard_library_package(package)
+      parser = Crimson::Sexpistol.new
+      Dir.glob(File.dirname(__FILE__) + "/../standard-library/#{package}.scm") do |file|
         next if file == '.' or file == '..'
         self.eval(expand(parser.parse(File.read(file))))
       end
@@ -23,7 +32,7 @@ module Crimson
         return x if !x.is_a? Array
         # handle rest
         case x[0]
-        when :quote then x[1..-1]
+        when :quote then return x[1..-1]
         when :if
           _, test, conseq, alt = x
           x = eval(test, env) ? conseq : alt
@@ -48,7 +57,6 @@ module Crimson
             env = Crimson::Environment.new(
               proc.parameters, exps, proc.environment)
           else
-            puts 'calling'
             return proc.call(*exps[0..-1])
           end
         end
@@ -64,7 +72,8 @@ module Crimson
     # +top_level+ is a boolean indicating whether we are at the top
     # level of an expansion.
     def expand(x, top_level = true)
-      raise Exception, "x #{x} is undefined" unless x && x.size > 0
+      raise Exception, "x #{x} is undefined" if x == nil
+      raise Exception, "x #{x} is an empty array" if (x.is_a?(Array) && x.size == 0)
       return x if !x.is_a?(Array)
 
       if x[0] == :quote                 # (quote exp)
@@ -73,7 +82,8 @@ module Crimson
       elsif x[0] == :if
         x << nil if x.size == 3     # (if t c) => (if t c nil)
         require(x, (x.size == 4))
-        return x.map { |exp| expand(exp) }
+        # XXX: need to come back to this
+        return x # x.inject { |exp| expand(exp) }
       elsif x[0] == :set
         require(x, (x.size == 3))
         var = x[1] # (set! non-var exp) => Error
