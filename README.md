@@ -35,13 +35,13 @@ Open a repl:
 bin/crimson repl
 ```
 
-Read and execute some code:
+Read and evaluate some code:
 
 ```
-bin/crimson execute /path/to/code.scm
+bin/crimson eval /path/to/code.scm
 ```
 
-You can of course also embed Crimson within your Ruby applications:
+You can also embed Crimson within your Ruby applications:
 
 ```ruby
 require 'crimson'
@@ -51,8 +51,9 @@ parser = Crimson::Parser.new
 env = Crimson::Environment.new
 program = '(define square (x) (* x x))'
            + '(display (square 3))'
+tree = parser.parse(program)
 
-puts interpreter.eval(parser.parse(program), env)
+interpreter.eval(parser.expand(tree), env)
 ```
 ## Development
 
