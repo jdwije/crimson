@@ -54,8 +54,6 @@ END
   it 'can expand :"define-macro" correctly' do
     badTree = [[:"define-macro", :x, 3]]
     expect{@interpreter.expand(badTree)}.to raise_error(SyntaxError)
-    goodTree = [[:"define-macro", :x, [:lambda, [:x, :y], [:+, :x, :y]]]]
-    puts @interpreter.expand(goodTree).inspect
   end
 
   # it 'can expand :begin correctly' do
