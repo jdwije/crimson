@@ -42,14 +42,14 @@ module Crimson
       end
     end
 
-    desc "execute PROGRAM", "execute PROGRAM string as risp code"
-    option :file, :type => :boolean, :desc => "read and execute from file"
-    def execute(program)
-      if options.key? 'file'
+    desc "eval PROGRAM", "read and evaluate FILE as program"
+    option :inline, :type => :boolean, :desc => "read and evaluate from string"
+    def eval(program)
+      if options.key? 'inline'
+        contents = program
+      else
         file = File.open(program, "rb")
         contents = file.read
-      else
-        contents = program
       end
       tree = @parser.parse(contents)
       tree.each { |exp|
