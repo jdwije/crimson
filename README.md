@@ -9,8 +9,7 @@ a subset of the R6RS specification and adds back some flavor by exploiting the
 Ruby run-time environment.
 
 Crimson's focus is on Ruby inter-op, allowing you to use Ruby libraries and tools
-inside Scheme with minimal friction and likewise allowing you to use Scheme code
-from within Ruby just as effectively.
+inside Scheme with minimal friction.
 
 ## Installation
 
@@ -69,6 +68,11 @@ Bug reports and pull requests are welcome on GitHub at https://github.com/jdwije
 ## License
 
 The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
+
+Additionally this software makes use of the most excellent SexPistol parser
+library. It is distributed under the terms and conditions of the MIT license
+and has been incorporated into this software, however the copyright remains
+with its author, Aaron Gough. For more information see its [license](https://github.com/aarongough/sexpistol/blob/master/MIT-LICENSE).
 
 ## Inspiration
 
