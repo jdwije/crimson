@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Crimson::Interpreter do
 
   before :each do
-    @parser = Crimson::Sexpistol.new
+    @parser = Crimson::Parser.new
     @env = Crimson::Environment.new
     @interpreter = Crimson::Interpreter.new(@env)
   end
@@ -18,6 +18,7 @@ describe Crimson::Interpreter do
 (define y 2)
 (quote (x y))
 END
+
     tree = @parser.parse(prog)
     result = @interpreter.expand(tree)
     expect(result[2]).to eq([:quote, [:x, :y]])

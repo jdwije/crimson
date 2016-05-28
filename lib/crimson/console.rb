@@ -16,7 +16,7 @@ module Crimson
     def initialize(*args)
       super(*args)
       @interpreter = Crimson::Interpreter.new(Crimson::Environment.new)
-      @parser = Crimson::Sexpistol.new
+      @parser = Crimson::Parser.new
     end
 
     desc "repl", "start an interactive risp REPL"
